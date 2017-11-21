@@ -1,4 +1,4 @@
-function [Vcmd] = DirectionFollower(clusterPosition)
+function [Vcmd] = DirectionFollower(clusterPosition, fieldGenerator)
     clusterX = clusterPosition(1);
     clusterY = clusterPosition(2);
     clusterTheta = clusterPosition(3);
@@ -26,8 +26,9 @@ function [Vcmd] = DirectionFollower(clusterPosition)
     
     %vectorResponse = [sinkField(r1_pos(1), r1_pos(2)); sinkField(r2_pos(1), r2_pos(2)); sinkField(r3_pos(1), r3_pos(2))];
     %vectorResponse = [waterDelta(r1_pos(1), r1_pos(2)); waterDelta(r2_pos(1), r2_pos(2)); waterDelta(r3_pos(1), r3_pos(2))];
-    vectorResponse = [vortex(r1_pos(1), r1_pos(2)); vortex(r2_pos(1), r2_pos(2)); vortex(r3_pos(1), r3_pos(2))];
-    
+    %vectorResponse = [vortex(r1_pos(1), r1_pos(2)); vortex(r2_pos(1), r2_pos(2)); vortex(r3_pos(1), r3_pos(2))];
+    vectorResponse = [feval(fieldGenerator, r1_pos(1), r1_pos(2)); feval(fieldGenerator, r2_pos(1), r2_pos(2)); feval(fieldGenerator, r3_pos(1), r3_pos(2))];
+
     
     
     grad = vectorResponse(1,:)+vectorResponse(2,:)+vectorResponse(3,:);

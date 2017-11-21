@@ -1,11 +1,10 @@
-function [Vcmd] = MaxResponseFinder(clusterPosition)
+function [Vcmd] = MaxResponseFinder(clusterPosition, fieldGenerator)
 %     addpath(genpath('./VortexStuff'));
     clusterX = clusterPosition(1);
     clusterY = clusterPosition(2);
     clusterTheta = clusterPosition(3);
     clusterD = clusterPosition(4);
     time = clusterPosition(5);
-    
     
     %% Field shifting %%
     field_shift_rate = [0 0 0 0];
@@ -27,7 +26,7 @@ function [Vcmd] = MaxResponseFinder(clusterPosition)
     r3_pos = Rgc*[-0.5*clusterD; 0.8660*clusterD] + [clusterX; clusterY];
     
     %vectorResponse = [flowingRiver(r1_pos(1), r1_pos(2)); flowingRiver(r2_pos(1), r2_pos(2)); flowingRiver(r3_pos(1), r3_pos(2))];
-    vectorResponse = [vortex(r1_pos(1), r1_pos(2)); vortex(r2_pos(1), r2_pos(2)); vortex(r3_pos(1), r3_pos(2))];
+    vectorResponse = [feval(fieldGenerator, r1_pos(1), r1_pos(2)); feval(fieldGenerator, r2_pos(1), r2_pos(2)); feval(fieldGenerator, r3_pos(1), r3_pos(2))];
     vectorMagnitudes = [getMagnitude(vectorResponse(1,:)), getMagnitude(vectorResponse(2,:)), getMagnitude(vectorResponse(3,:))];
 
     R1 = [r1_pos; vectorMagnitudes(1)];

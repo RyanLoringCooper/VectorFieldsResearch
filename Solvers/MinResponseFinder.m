@@ -1,10 +1,9 @@
-function [Vcmd] = doubleGradient(clusterPosition, fieldGenerator)
+function [Vcmd] = MinResponseFinder(clusterPosition, fieldGenerator)
     clusterX = clusterPosition(1);
     clusterY = clusterPosition(2);
     clusterTheta = clusterPosition(3);
     clusterD = clusterPosition(4);
     time = clusterPosition(5);
-    
     
     %% Field shifting %%
     field_shift_rate = [0 0 0 0];
@@ -19,35 +18,31 @@ function [Vcmd] = doubleGradient(clusterPosition, fieldGenerator)
 %
 %     2     3
 
+
     %Robot positions in global frame
     r1_pos = Rgc*[clusterD; 0] + [clusterX; clusterY];
     r2_pos = Rgc*[-0.5*clusterD; -0.8660*clusterD] + [clusterX; clusterY];
     r3_pos = Rgc*[-0.5*clusterD; 0.8660*clusterD] + [clusterX; clusterY];
     
+    %vectorResponse = [flowingRiver(r1_pos(1), r1_pos(2)); flowingRiver(r2_pos(1), r2_pos(2)); flowingRiver(r3_pos(1), r3_pos(2))];
+    %vectorResponse = [vortex(r1_pos(1), r1_pos(2)); vortex(r2_pos(1), r2_pos(2)); vortex(r3_pos(1), r3_pos(2))];
     vectorResponse = [feval(fieldGenerator, r1_pos(1), r1_pos(2)); feval(fieldGenerator, r2_pos(1), r2_pos(2)); feval(fieldGenerator, r3_pos(1), r3_pos(2))];
-    %vectorResponse = [sinkField(r1_pos(1), r1_pos(2)); sinkField(r2_pos(1), r2_pos(2)); sinkField(r3_pos(1), r3_pos(2))];
-    %vectorResponse = [waterDelta(r1_pos(1), r1_pos(2)); waterDelta(r2_pos(1), r2_pos(2)); waterDelta(r3_pos(1), r3_pos(2))];
-    %vectorResponse = getVectorResponse([vortex(r1_pos(1), r1_pos(2)); vortex(r2_pos(1), r2_pos(2)); vortex(r3_pos(1), r3_pos(2))]);
+    vectorMagnitudes = [getMagnitude(vectorResponse(1,:)), getMagnitude(vectorResponse(2,:)), getMagnitude(vectorResponse(3,:))];
+
+    R1 = [r1_pos; vectorMagnitudes(1)];
+    R2 = [r2_pos; vectorMagnitudes(2)];
+    R3 = [r3_pos; vectorMagnitudes(3)];
     
-    R1X = [r1_pos; vectorResponse(1,1)];
-    R1Y = [r1_pos; vectorResponse(1,2)];
-    
-    R2X = [r2_pos; vectorResponse(2,1)];
-    R2Y = [r2_pos; vectorResponse(2,2)];
-    
-    R3X = [r3_pos; vectorResponse(3,1)];
-    R3Y = [r3_pos; vectorResponse(3,2)];
-    
-    grad = grad_calc(R1X, R2X, R3X)+grad_calc(R1Y, R2Y, R3Y);
-    grad = [-grad(1), -grad(2), 0]
-    gXY_unit = grad/norm(grad)
+    %Gradient calcs 
+    g1 = grad_calc(R1, R2, R3);
+    g1_unit = g1/norm(g1);
 
     %Rotation matrix from global frame to cluster frame.
     Rcg = [cos(clusterTheta), sin(clusterTheta), 0; 
            -sin(clusterTheta), cos(clusterTheta), 0;
            0, 0, 1];
 
-    des_theta = atan2(gXY_unit(2), gXY_unit(1));
+    des_theta = atan2(g1_unit(2), g1_unit(1));
     thetac_dot = (des_theta - clusterTheta);
 
     d_dot = 0; %Can be used to change the size of the cluster
@@ -79,25 +74,11 @@ function [Vcmd] = doubleGradient(clusterPosition, fieldGenerator)
         r2_pos(2); %16
         r3_pos(1); %17
         r3_pos(2); %18
-        grad(1); %19
-        grad(2); %20
+        g1(1); %19
+        g1(2); %20
         field_shift(1); %21
         field_shift(2); %22
         field_shift(3); %23
         field_shift(4)];%24
     Vcmd = Vcmd';
 end
-
-function retVal = getVectorResponse(vecs)
-    vecs = minMaxBetweenNeg1and1(vecs);
-    [rows, cols] = size(vecs);
-    for i = 1:rows
-        for j = 1:cols
-            if vecs(i, j) ~= 0
-                vecs(i, j) = (vecs(i, j)/abs(vecs(i, j))*(1-abs(vecs(i, j))));
-            end
-        end
-    end
-    retVal = vecs;
-end
-
