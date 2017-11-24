@@ -1,4 +1,4 @@
-function [ ] = plot_path( file, resolution, width )
+function [ ] = plot_path( file, resolution, width, fieldGenerator)
 %PLOT_PATH Plots cluster path on contour
 %   Superimposes the path the robots took onto a 2D contour map.
 %   'width' indicates the range to be plotted, 'resolution' is the time
@@ -18,12 +18,7 @@ y = ymin-res:res:ymax+res;
 
 [X,Y] = meshgrid(x,y);
 field_shift = [0 0 0 0];
-%fieldGrapher(0, 100, -10, 100, 'sinkField');
-%fieldGrapher(0, 100, -10, 100, 'flowingRiver');
-%fieldGrapher(0, 100, -100, 200, 'waterDelta');
-fieldGrapher(xmin-res, xmax+res, ymin-res, ymax+res, 'vortex');
-%Z = scalar_surface(X,Y, field_shift);
-%contour(x,y,Z);
+fieldGrapher(xmin-res, xmax+res, ymin-res, ymax+res, fieldGenerator);
 
 time = [0:resolution:data.Time(end)];
 v = [-100:5:100];

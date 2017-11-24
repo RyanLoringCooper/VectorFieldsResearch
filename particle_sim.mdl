@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.31"
+    ComputedModelVersion    "1.32"
     NumModelReferences	    0
     NumTestPointedSignals   0
     NumProvidedFunctions    0
@@ -40,7 +40,7 @@ Model {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [361.0, 33.0, 1299.0, 1023.0]
+      Location		      [63.0, 15.0, 1206.0, 706.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -64,9 +64,9 @@ Model {
 	IsActive		[1]
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
-	Extents			[1249.0, 843.0]
-	ZoomFactor		[1.75]
-	Offset			[30.13770913770901, 137.89060489060489]
+	Extents			[1154.0, 526.0]
+	ZoomFactor		[1.5395933633072056]
+	Offset			[23.897249390095681, 151.90668982235246]
       }
       Object {
 	$PropName		"DockComponentsInfo"
@@ -84,24 +84,24 @@ Model {
       }
       WindowState	      "AAAA/wAAAAD9AAAAAgAAAAAAAAC9AAAB+PwCAAAAA/sAAAAWAEQAbwBjAGsAVwBpAGQAZwBlAHQAMwEAAAAxAAAB+AAAA"
       "AAAAAAA+wAAABYARABvAGMAawBXAGkAZABnAGUAdAA0AAAAAAD/////AAAAAAAAAAD7AAAAUgBHAEwAVQBFADIAIAB0AHIAZQBlACAAYwBvAG0Ac"
-      "ABvAG4AZQBuAHQALwBHAEwAVQBFADIAIAB0AHIAZQBlACAAYwBvAG0AcABvAG4AZQBuAHQAAAAAAP////8AAABfAP///wAAAAEAAAAAAAAAAPwCA"
+      "ABvAG4AZQBuAHQALwBHAEwAVQBFADIAIAB0AHIAZQBlACAAYwBvAG0AcABvAG4AZQBuAHQAAAAAAP////8AAABaAP///wAAAAEAAAAAAAAAAPwCA"
       "AAAAfsAAABUAEcATABVAEUAMgA6AFAAcgBvAHAAZQByAHQAeQBJAG4AcwBwAGUAYwB0AG8AcgAvAFAAcgBvAHAAZQByAHQAeQAgAEkAbgBzAHAAZ"
-      "QBjAHQAbwByAAAAAAD/////AAAAJwD///8AAAUDAAADgQAAAAEAAAACAAAAAQAAAAL8AAAAAQAAAAIAAAAP/////wAAAAAA/////wAAAAAAAAAA/"
+      "QBjAHQAbwByAAAAAAD/////AAAAJwD///8AAASmAAACRgAAAAEAAAACAAAAAQAAAAL8AAAAAQAAAAIAAAAP/////wAAAAAA/////wAAAAAAAAAA/"
       "////wEAAAAA/////wAAAAAAAAAA/////wAAAAAA/////wAAAAAAAAAA/////wAAAAAA/////wAAAAAAAAAA/////wAAAAAA/////wAAAAAAAAAA/"
       "////wEAAAB5/////wAAAAAAAAAA/////wEAAADa/////wAAAAAAAAAA/////wAAAAAA/////wAAAAAAAAAA/////wEAAAFT/////wAAAAAAAAAA/"
-      "////wAAAAAA/////wAAAAAAAAAA/////wAAAAAA/////wAAAAAAAAAA/////wAAAAAA/////wAAAAAAAAAA/////wEAAAMr/////wAAAAAAAAAA/"
-      "////wEAAANa/////wAAAAAAAAAA/////wAAAAAA/////wAAAAAAAAAA"
+      "////wAAAAAA/////wAAAAAAAAAA/////wAAAAAA/////wAAAAAAAAAA/////wAAAAAA/////wAAAAAAAAAA/////wEAAAMx/////wAAAAAAAAAA/"
+      "////wEAAANg/////wAAAAAAAAAA/////wAAAAAA/////wAAAAAAAAAA"
     }
   }
   Created		  "Mon Feb 01 09:49:53 2016"
   Creator		  "KAMAK"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "Zikinkeria"
+  LastModifiedBy	  "rcooper"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Tue Nov 21 11:26:23 2017"
-  RTWModifiedTimeStamp	  433164201
-  ModelVersionFormat	  "1.%<AutoIncrement:31>"
+  LastModifiedDate	  "Fri Nov 24 11:49:23 2017"
+  RTWModifiedTimeStamp	  433424960
+  ModelVersionFormat	  "1.%<AutoIncrement:32>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -1118,7 +1118,7 @@ Model {
   }
   System {
     Name		    "particle_sim"
-    Location		    [361, 33, 1660, 1056]
+    Location		    [63, 15, 1269, 721]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -1130,7 +1130,7 @@ Model {
     TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
     TiledPageScale	    1
     ShowPageBoundaries	    off
-    ZoomFactor		    "175"
+    ZoomFactor		    "154"
     ReportName		    "simulink-default.rpt"
     SIDHighWatermark	    "126"
     Block {
@@ -1144,7 +1144,7 @@ Model {
       Variant		      off
       System {
 	Name			"Gradient Function1"
-	Location		[361, 33, 1660, 1056]
+	Location		[306, 5, 1605, 785]
 	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -1347,7 +1347,7 @@ Model {
 	  SID			  "125"
 	  Position		  [245, 240, 275, 270]
 	  ZOrder		  3
-	  Value			  "uint8('source')"
+	  Value			  "uint8('doublet')"
 	}
 	Block {
 	  BlockType		  Constant
@@ -1425,7 +1425,7 @@ Model {
       SID		      "78"
       Position		      [255, 340, 285, 370]
       ZOrder		      -2
-      Value		      "[30, 30, 0, 1]"
+      Value		      "[50, -50, 0, 1]"
       OutDataTypeStr	      "double"
     }
     Block {
@@ -2232,9 +2232,6 @@ Stateflow {
     screen		    [1 1 3600 1200 1.180555555555556]
     treeNode		    [0 3 0 0]
     viewObj		    2
-    visible		    1
-    subviewS {
-    }
     ssIdHighWaterMark	    7
     decomposition	    CLUSTER_CHART
     type		    EML_CHART
