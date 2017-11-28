@@ -1,11 +1,11 @@
-function fieldGrapher(minX, maxX, minY, maxY, fieldGenerator)
+function fieldGrapher(minX, maxX, minY, maxY, fieldGenerator, displayNormalized)
     x = xField(minX, maxX, minY, maxY);
     y = yField(minX, maxX, minY, maxY);
     u = zeros(maxY-minY, maxX-minX);
     v = zeros(maxY-minY, maxX-minX);
     for i = 1:maxY-minY
         for j = 1:maxX-minX
-            dirt = feval(fieldGenerator, x(i, j), y(i, j));
+            dirt = feval(fieldGenerator, x(i, j), y(i, j), displayNormalized);
             u(i, j) = dirt(1);
             v(i, j) = dirt(2);
         end
