@@ -12,13 +12,14 @@ ymin = -width;
 ymax = width;
 
 res = 1;
+plotRes = 1;
 
 x = xmin-res:res:xmax+res;
 y = ymin-res:res:ymax+res;
 
 [X,Y] = meshgrid(x,y);
 field_shift = [0 0 0 0];
-fieldGrapher(xmin-res, xmax+res, ymin-res, ymax+res, fieldGenerator, true);
+fieldGrapher(xmin-res, xmax+res, ymin-res, ymax+res, fieldGenerator, true, plotRes);
 
 time = [0:resolution:data.Time(end)];
 v = [-100:5:100];

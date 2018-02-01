@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.35"
+    ComputedModelVersion    "1.36"
     NumModelReferences	    0
     NumTestPointedSignals   0
     NumProvidedFunctions    0
@@ -99,9 +99,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "Zikinkeria"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Mon Nov 27 17:28:30 2017"
-  RTWModifiedTimeStamp	  433704141
-  ModelVersionFormat	  "1.%<AutoIncrement:35>"
+  LastModifiedDate	  "Thu Nov 30 13:02:22 2017"
+  RTWModifiedTimeStamp	  433866686
+  ModelVersionFormat	  "1.%<AutoIncrement:36>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -1327,7 +1327,7 @@ Model {
 	  SID			  "125"
 	  Position		  [245, 240, 275, 270]
 	  ZOrder		  3
-	  Value			  "uint8('vortexWithSource')"
+	  Value			  "uint8('doublet')"
 	}
 	Block {
 	  BlockType		  Constant
@@ -1335,7 +1335,7 @@ Model {
 	  SID			  "124"
 	  Position		  [245, 180, 275, 210]
 	  ZOrder		  2
-	  Value			  "uint8('OppositeFollower')"
+	  Value			  "uint8('DirectionFollower')"
 	}
 	Block {
 	  BlockType		  Outport
@@ -1398,7 +1398,7 @@ Model {
       SID		      "78"
       Position		      [255, 340, 285, 370]
       ZOrder		      -2
-      Value		      "[50, 50, 0, 1]"
+      Value		      "[50, .1, 0, 1]"
       OutDataTypeStr	      "double"
     }
     Block {
