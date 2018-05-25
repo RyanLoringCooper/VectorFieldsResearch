@@ -6,7 +6,7 @@ function [Vcmd] = MaxResponseFinder(clusterPosition, fieldGenerator)
     clusterD = clusterPosition(4);
     time = clusterPosition(5);
     
-    %% Field shifting %%
+    % Field shifting %%
     field_shift_rate = [0 0 0 0];
     field_shift = field_shift_rate*time;
     
@@ -25,7 +25,6 @@ function [Vcmd] = MaxResponseFinder(clusterPosition, fieldGenerator)
     r2_pos = Rgc*[-0.5*clusterD; -0.8660*clusterD] + [clusterX; clusterY];
     r3_pos = Rgc*[-0.5*clusterD; 0.8660*clusterD] + [clusterX; clusterY];
     
-    %vectorResponse = [flowingRiver(r1_pos(1), r1_pos(2)); flowingRiver(r2_pos(1), r2_pos(2)); flowingRiver(r3_pos(1), r3_pos(2))];
     vectorResponse = [feval(fieldGenerator, r1_pos(1), r1_pos(2)); feval(fieldGenerator, r2_pos(1), r2_pos(2)); feval(fieldGenerator, r3_pos(1), r3_pos(2))];
     vectorMagnitudes = [getMagnitude(vectorResponse(1,:)), getMagnitude(vectorResponse(2,:)), getMagnitude(vectorResponse(3,:))];
 

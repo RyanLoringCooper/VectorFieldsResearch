@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.36"
+    ComputedModelVersion    "1.46"
     NumModelReferences	    0
     NumTestPointedSignals   0
     NumProvidedFunctions    0
@@ -40,7 +40,7 @@ Model {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [-1250.0, 73.0, 1206.0, 706.0]
+      Location		      [2072.0, 46.0, 1206.0, 706.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -65,8 +65,8 @@ Model {
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
 	Extents			[1156.0, 526.0]
-	ZoomFactor		[1.5398886827458258]
-	Offset			[23.279442771084348, 151.90843373493976]
+	ZoomFactor		[1.5413618458075409]
+	Offset			[23.668056968132305, 151.91712303760494]
       }
       Object {
 	$PropName		"DockComponentsInfo"
@@ -99,9 +99,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "Zikinkeria"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Thu Nov 30 13:02:22 2017"
-  RTWModifiedTimeStamp	  433866686
-  ModelVersionFormat	  "1.%<AutoIncrement:36>"
+  LastModifiedDate	  "Fri May 25 13:48:35 2018"
+  RTWModifiedTimeStamp	  449156831
+  ModelVersionFormat	  "1.%<AutoIncrement:46>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -205,7 +205,7 @@ Model {
 	  DisabledProps		  []
 	  Description		  ""
 	  StartTime		  "0.0"
-	  StopTime		  "inf"
+	  StopTime		  "50"
 	  AbsTol		  "auto"
 	  FixedStep		  "auto"
 	  InitialStep		  "auto"
@@ -1106,7 +1106,7 @@ Model {
   }
   System {
     Name		    "particle_sim"
-    Location		    [-1250, 73, -44, 779]
+    Location		    [2072, 46, 3278, 752]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -1120,7 +1120,7 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "154"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "126"
+    SIDHighWatermark	    "132"
     Block {
       BlockType		      SubSystem
       Name		      "Gradient Function1"
@@ -1132,7 +1132,7 @@ Model {
       Variant		      off
       System {
 	Name			"Gradient Function1"
-	Location		[-1250, 73, -44, 779]
+	Location		[2072, 46, 3278, 752]
 	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -1144,7 +1144,7 @@ Model {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"100"
+	ZoomFactor		"110"
 	Block {
 	  BlockType		  Inport
 	  Name			  "Position"
@@ -1327,7 +1327,7 @@ Model {
 	  SID			  "125"
 	  Position		  [245, 240, 275, 270]
 	  ZOrder		  3
-	  Value			  "uint8('doublet')"
+	  Value			  "uint8('doubleSource')"
 	}
 	Block {
 	  BlockType		  Constant
@@ -1335,7 +1335,7 @@ Model {
 	  SID			  "124"
 	  Position		  [245, 180, 275, 210]
 	  ZOrder		  2
-	  Value			  "uint8('DirectionFollower')"
+	  Value			  "uint8('sourceTrenchFollower')"
 	}
 	Block {
 	  BlockType		  Outport
@@ -1396,9 +1396,10 @@ Model {
       BlockType		      Constant
       Name		      "Initial Conditions\nxc, yc, theta_c, d1"
       SID		      "78"
-      Position		      [255, 340, 285, 370]
+      Position		      [175, 342, 285, 388]
       ZOrder		      -2
-      Value		      "[50, .1, 0, 1]"
+      Value		      "[25, 0,  pi, 2]"
+      VectorParams1D	      off
       OutDataTypeStr	      "double"
     }
     Block {
@@ -1423,7 +1424,7 @@ Model {
       Variant		      off
       System {
 	Name			"Particle Kinematics1"
-	Location		[105, 23, 1404, 1046]
+	Location		[368, 233, 1574, 939]
 	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -1435,7 +1436,7 @@ Model {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"202"
+	ZoomFactor		"125"
 	Block {
 	  BlockType		  Inport
 	  Name			  "Velocity Command"
@@ -1483,7 +1484,7 @@ Model {
 	  Variant		  off
 	  System {
 	    Name		    "Transfer Functions"
-	    Location		    [105, 23, 1404, 1046]
+	    Location		    [368, 233, 1574, 939]
 	    Open		    off
 	    ModelBrowserVisibility  off
 	    ModelBrowserWidth	    200
@@ -2010,7 +2011,7 @@ Model {
       BlockType		      Constant
       Name		      "Velocity Initial Conditions\nxg_dot, yg_dot, theta_c_dot, d_dot"
       SID		      "119"
-      Position		      [255, 405, 285, 435]
+      Position		      [240, 415, 270, 445]
       ZOrder		      2
       Value		      "[0, 0, 0, 0]"
     }
@@ -2028,7 +2029,7 @@ Model {
       ZOrder		      1
       SrcBlock		      "Initial Conditions\nxc, yc, theta_c, d1"
       SrcPort		      1
-      Points		      [9, 0; 0, -35]
+      Points		      [9, 0; 0, -45]
       DstBlock		      "Particle Kinematics1"
       DstPort		      2
     }
@@ -2097,7 +2098,7 @@ Model {
       ZOrder		      12
       SrcBlock		      "Velocity Initial Conditions\nxg_dot, yg_dot, theta_c_dot, d_dot"
       SrcPort		      1
-      Points		      [33, 0; 0, -75]
+      Points		      [48, 0; 0, -85]
       DstBlock		      "Particle Kinematics1"
       DstPort		      3
     }
