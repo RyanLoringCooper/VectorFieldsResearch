@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.46"
+    ComputedModelVersion    "1.47"
     NumModelReferences	    0
     NumTestPointedSignals   0
     NumProvidedFunctions    0
@@ -99,9 +99,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "Zikinkeria"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Fri May 25 13:48:35 2018"
-  RTWModifiedTimeStamp	  449156831
-  ModelVersionFormat	  "1.%<AutoIncrement:46>"
+  LastModifiedDate	  "Wed May 30 12:56:49 2018"
+  RTWModifiedTimeStamp	  449585760
+  ModelVersionFormat	  "1.%<AutoIncrement:47>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -205,7 +205,7 @@ Model {
 	  DisabledProps		  []
 	  Description		  ""
 	  StartTime		  "0.0"
-	  StopTime		  "50"
+	  StopTime		  "100"
 	  AbsTol		  "auto"
 	  FixedStep		  "auto"
 	  InitialStep		  "auto"
@@ -1398,7 +1398,7 @@ Model {
       SID		      "78"
       Position		      [175, 342, 285, 388]
       ZOrder		      -2
-      Value		      "[25, 0,  pi, 2]"
+      Value		      "[0, 25,  -pi/2, 2]"
       VectorParams1D	      off
       OutDataTypeStr	      "double"
     }

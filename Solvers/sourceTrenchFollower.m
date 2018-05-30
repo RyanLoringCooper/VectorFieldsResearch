@@ -37,29 +37,15 @@ function [Vcmd] = sourceTrenchFollower(clusterPosition, fieldGenerator)
                     sin(clusterTheta), cos(clusterTheta), 0;
                     0,0,1];
     centeringContribution = RclustToGlob*centeringContributionCluster*.2;
-    %% this is in the global frame, the vector aims to rotate a non holonomic 
-    % cluster so that it is perpendicular to the trench   
-    totalRes = sensorResponses(1,:)+sensorResponses(2,:)+sensorResponses(3,:);
-    totalRes = totalRes';
-    totalRes = [totalRes; 0];
-    rotatingContribution = totalRes/norm(totalRes);
-    
+    centeringContribution = zeros(3,1);
+   
     %% this is for the gradient
     R1 = [r1_pos(1); r1_pos(2); vectorMagnitudes(1)];
     R2 = [r2_pos(1); r2_pos(2); vectorMagnitudes(2)];
     R3 = [r3_pos(1); r3_pos(2); vectorMagnitudes(3)];
     %Gradient calc for gradient descent
     grad = grad_calc(R1, R2, R3);
-    % vector representing the way the cluster 
-    clusterVec = r2_pos-r3_pos;
-    % rotate clusterVec by 90 degrees to get orthoVec=[0,-1;1,0]clusterVec
-    % this is the direction that the cluster is facing
-    orthoVec = [-clusterVec(2); clusterVec(1)];
-    if abs(angleBetween(rotatingContribution, orthoVec)) > pi/6
-        centeringContribution = zeros(3,1);
-        g1_unit = zeros(3,1);
-    end
-    g1 = grad+centeringContribution+rotatingContribution;
+    g1 = grad+centeringContribution;
     g1_unit = g1/norm(g1);
     
     
@@ -68,7 +54,10 @@ function [Vcmd] = sourceTrenchFollower(clusterPosition, fieldGenerator)
            -sin(clusterTheta), cos(clusterTheta), 0;
            0, 0, 1];
 
-    des_theta = atan2(g1_unit(2), g1_unit(1));
+    %% determine desiredThetac as this controller works on a non holonomic cluster 
+    % cluster so that it is perpendicular to the trench   
+    totalRes = -1*(sensorResponses(1,:)+sensorResponses(2,:)+sensorResponses(3,:));
+    des_theta = atan2(totalRes(2), totalRes(1));
     thetac_dot = (des_theta - clusterTheta);
 
     d_dot = 0; %Can be used to change the size of the cluster
